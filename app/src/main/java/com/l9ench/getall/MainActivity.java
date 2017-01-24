@@ -2,6 +2,7 @@ package com.l9ench.getall;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -22,7 +24,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     EditText et1,et2;
-    Button b1 ;
+    Button b1 ,b2;
     ImageButton btn ;
     int year_x,date_x,month_x;
     static final int DILOG_ID =0;
@@ -49,11 +51,23 @@ public class MainActivity extends AppCompatActivity {
                 s2=et2.getText().toString();
                 s3=t1.getText().toString();
                 insertme(s1,s2,s3);
+                Toast.makeText(MainActivity.this,"Account created ",Toast.LENGTH_SHORT).show();
 
 
 
             }
-        });}
+        });
+
+        b2=(Button)findViewById(R.id.button3);
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,Main3Activity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
     public void showDialogButtonClick(){
         btn = (ImageButton)findViewById(R.id.imageButton);
 
